@@ -48,16 +48,16 @@ a bulleted list of the functions (and datasets if applicable) that will be inclu
 
 - `split()`
 
-	*The function splits the training input samples* `X`*, and target values* `y` *(class labels in classification, real numbers in regression) into train, test and validation sets according to specified ratios.
+	*The function splits the training input samples* `X`*, and target values* `y` *(class labels in classification, real numbers in regression) into train, test and validation sets according to specified proportions.
 
 	Outputs four* `X` *dataframes and four* `y` *lists. One each for training, validation, test, and combined training and validation.*
 
 	__Inputs:__
 	- X set, type: `data.frame()`
 	- Y set, type: `data.frame()` or `list()`
-	- train ratio, type: `float`
-	- test ratio, type: `float`
-	- validation ratio, type: `float`
+	- proportion of train data, type: `float`
+	- proportion of validation data, type: `float`
+	- proportion of test data, type: `float`
 
 	__Outputs:__
 	- X train set, type: `data.frame()`
