@@ -20,5 +20,5 @@
 #' split(X_toy_data, y_toy_data, 0.7, 0.1, 0.2)
 split <- function(X, y, prop_train, prop_test, prop_validation){
   
-  return(X_train, y_train, X_validation, y_validation, X_train_validation, y_train_validation, X_test, y_test)
+  return(c(X_train, y_train, X_validation, y_validation, X_train_validation, y_train_validation, X_test, y_test))
 }
