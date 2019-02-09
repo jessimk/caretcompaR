@@ -18,3 +18,5 @@ Description: caretcompaR facilitates beautifully efficient comparisons of machin
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Suggests: 
+    testthat
