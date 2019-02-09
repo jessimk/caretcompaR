@@ -1,8 +1,5 @@
 context("test-train_test_acc_time")
 
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
-})
 
 # SAMPLE DATA
 
@@ -22,10 +19,10 @@ result <- data.frame(model = c('lm','rf','knn','svmLinearWeights'),
                       total_time = runif(4,2,12)
 )
 
-# Sufficient inputs tests
+# Sufficient inputs for the function tests
 
-test_that("insufficient input", {
-  expect_error(train_test_acc_time(models, X_train, y_train, X_test, y_test),
+test_that("insufficient inputs for the function", {
+  expect_error(train_test_acc_time(X_train, y_train, X_test, y_test),
                "models list input is missing")
   expect_error(train_test_acc_time(models, X_train, y_train, X_test),
                "y-test dataframe is missing")
@@ -37,10 +34,33 @@ test_that("Output is 1 dataframe", {
   expect_equal(length(res), 1)
 })
 
-# Output should be 1 dataframe 
-test_that("Output is 1 dataframe", {
-  res <- train_test_acc_time(models, X_train, y_train, X_test, y_test)
-  expect_equal(length(res), 1)
+# Check the input type 
+test_that("whether input models is a list ", {
+  expect_error(train_test_acc_time('models', X_train, y_train, X_test, y_test),
+               "The models should be list ")
+  expect_error(train_test_acc_time(models, 'X_train', y_train, X_test, y_test),
+               "The X train should be dataframe")
 })
+
+# Check models input is not empty
+test_that("whether input models is not an empty list ", {
+  expect_error(train_test_acc_time(models, X_train, y_train, X_test, y_test),
+               "The models list should not be empty  ")
+
+})
+
+# Dimensions for Xtrain and ytrain should be consistent 
+test_that("consistency of Xtrain and ytrain domensions", {
+  expect_error(train_test_acc_time(models, X_train, y_train, X_test, y_test),
+               "The dimensions of Xtrain and ytrain are not consistent   ")
+  
+})
+
+
+
+
+
+
+
 
 

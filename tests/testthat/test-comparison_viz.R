@@ -71,3 +71,8 @@ test_that("third input", {
   expect_error(comparison_viz(df,"time", "123"),
                "Extra input provided")
 })
+
+
+
+
+
