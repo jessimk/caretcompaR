@@ -1,0 +1,22 @@
+Package: caretcompaR
+Title: Regression and Classification model comparison wrapper around caret in R
+Version: 0.0.0.9000
+Authors@R: 
+     person(given = "Jes",
+           family = "Simkin",
+           role = c("aut", "cre"),
+           email = "first.last@example.com")
+    person(given = "Birinder",
+           family = "Singh",
+           role = c("aut", "cre"),
+           email = "first.last@example.com")
+    person(given = "Talha",
+           family = "Siddiqui",
+           role = c("aut", "cre"),
+           email = "talsiddiqui@gmail.com")
+Description: caretcompaR facilitates beautifully efficient comparisons of machine learning classifiers and regressors by harnessing the power of caret and illustrating it in dataframe and visualization.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat
