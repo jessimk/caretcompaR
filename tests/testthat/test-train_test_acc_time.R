@@ -31,5 +31,16 @@ test_that("insufficient input", {
                "y-test dataframe is missing")
 })
 
+# Output should be 1 dataframe 
+test_that("Output is 1 dataframe", {
+  res <- train_test_acc_time(models, X_train, y_train, X_test, y_test)
+  expect_equal(length(res), 1)
+})
+
+# Output should be 1 dataframe 
+test_that("Output is 1 dataframe", {
+  res <- train_test_acc_time(models, X_train, y_train, X_test, y_test)
+  expect_equal(length(res), 1)
+})
 
 
