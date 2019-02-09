@@ -3,3 +3,4 @@ library(caretcompaR)
 
 
 test_check("caretcompaR")
+
