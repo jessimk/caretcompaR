@@ -35,7 +35,7 @@ Example of a contributing workflow :
 `git commit <meaningful message>`<br>
 `git push`<br>
 
-Once the changes are pushed to your local repository  submit pull request to master repository.
+Once the changes are pushed to your local repository  submit pull request. 
 
 #### Attributions
 Inspired by : [thoughtbot](https://github.com/thoughtbot/factory_bot_rails/blob/master/CONTRIBUTING.md)
