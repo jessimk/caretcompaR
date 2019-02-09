@@ -1,6 +1,7 @@
 library(testthat)
 library(caretcompaR)
-library(ggplot2)
+
 library(caret)
+library(ggplot2)
 
 test_check("caretcompaR")
