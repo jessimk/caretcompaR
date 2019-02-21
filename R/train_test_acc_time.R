@@ -16,16 +16,46 @@
 #' @examples
 #' train_test_acc_time(Models, Xtrain_data, ytrain_data, Xtest_data, ytest_data)
 #' 
+
 train_test_acc_time <- function(models, X_train, y_train, X_test, y_test){
   
-  result <- data.frame(model = c('lm','rf','knn','svmLinearWeights'), 
-                       train_accuracy = runif(4,50,100),
-                       test_accuracy = runif(4,50,100),
-                       variance = runif(4,0,50),
-                       fit_time = runif(4,1,6),
-                       predict_time = runif(4,1,6),
-                       total_time = runif(4,2,12))
   
+  if(is.null(models)||is.null(c(X_train,X_test,y_train,y_test)) ){
+    stop("Input is not correct")
+    stopifnot(is.atomic(models))
+  }
+  
+  
+  
+  
+  
+  result_df <- data.frame()
+  
+  for (i in models){
+    
+    start.time <- Sys.time()
+    model_fit <- train(X_train,y_train, method= i)
+    end.time <- Sys.time()
+    time_fit <- end.time-start.time
+    
+    start.time2 <- Sys.time()
+    train_accuracy <- confusionMatrix(predict(model_fit,X_train),y_train)$overall[[1]]
+    end.time2 <- Sys.time()  
+    time_predict <- end.time2-start.time2
+    
+    test_accuracy <- confusionMatrix(predict(model_fit,X_test),y_test)$overall[[1]]
+    row1 <- data.frame(model=c(i),Train_acc=c(train_accuracy), 
+                       Test_acc=c(test_accuracy),Fit_Time=c(time_fit),
+                       Predict_Time=c(time_predict),Total_Time=time_fit+time_predict)
+    result_df <- rbind(row1,result_df)
+    
+  }
+  
+  result <- result_df[order(-result_df$Test_acc),]
+
 
   return(result)
 }
+
+
+
