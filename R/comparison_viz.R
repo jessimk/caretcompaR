@@ -16,5 +16,24 @@
 #' 
 comparison_viz <- function(comparison, choice){
   
-  save.image()
+  assert("Comparison must be a dataframe", is.data.frame(comparison))
+  assert("Comparison dataframe must have 7 columns", dim(comparison)[2]==7)
+  assert("Comparison dataframe has row(s) missing", dim(comparison)[1]>=1)
+  assert("Comparison dataframe has incorrect column value types",
+         all(sapply(comparison, typeof)==c("integer", "double", "double", "double", "double", "double", "double")))
+  assert("Choice input must be string", is.character(choice))
+  assert("Choice input must either be 'time' or 'accuracy'", choice == "accuracy" | choice == "time")
+  
+  if(choice=="time"){
+    comparison <- comparison[-4][-3][-2]
+  }
+  
+  comparison_gathered <- gather(comparison[1:3], 
+                                key = Type, value = Accuracy, 
+                                names(comparison)[2], names(comparison)[3])
+  
+  comparison_visualization <- ggplot(comparison_gathered, aes(model, Accuracy)) + 
+    geom_bar(aes(fill = type), stat = "identity", position = "dodge")
+  
+  ggsave(paste0(choice,".png"), comparison_visualization)
 }
