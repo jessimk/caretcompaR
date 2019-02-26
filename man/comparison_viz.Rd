@@ -21,6 +21,13 @@ This function visualizes the output of train_test_acc_time() for easy communicat
 This function outputs a beautiful ggplot bar chart comparison of different models' training and test scores or the time it takes to fit and predict.
 }
 \examples{
+results_dataframe <- data.frame(model = c('svmPoly','knn','rf'), 
+Train_acc = runif(3,0,1), 
+Test_acc = runif(3,0,1), 
+Variance = runif(3,0,1), 
+Fit_Time = runif(3,0,4), 
+Predict_Time = runif(3,0,4), 
+Total_Time = runif(3,0,4))
 comparison_viz(results_dataframe, "accuracy")
 comparison_viz(results_dataframe, "time")
 
