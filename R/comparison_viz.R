@@ -9,6 +9,9 @@
 #'
 #' @return PNG image; A bar chart of accuracies or a time comparison bar chart, saved to root directory.
 #' @export
+#' 
+#' @import tidyr
+#' @import ggplot2
 #'
 #' @examples
 #' results_dataframe <- data.frame(model = c('svmPoly','knn','rf'), 
@@ -71,7 +74,7 @@ comparison_viz <- function(comparison, choice){
   
   comparison_visualization <- ggplot2::ggplot(comparison_gathered, aes(model, Accuracy)) + 
     ggplot2::geom_bar(aes(fill = Type), stat = "identity", position = "dodge") + 
-    labs(
+    ggplot2::labs(
       title = paste("Comparison of", choice),
       x = "Model",
       y = choice

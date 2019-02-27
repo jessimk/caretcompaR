@@ -3,3 +3,5 @@
 export(comparison_viz)
 export(split)
 export(train_test_acc_time)
+import(ggplot2)
+import(tidyr)

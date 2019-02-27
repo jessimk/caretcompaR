@@ -10,7 +10,6 @@ df <- data.frame(model = c('lm','rf','knn','svmLinearWeights'),
                  total_time = runif(4,2,12)
                  )
 
-library(tidyverse)
 
 # Input 'Comparison' dataframe tests
 
