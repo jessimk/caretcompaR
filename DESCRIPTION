@@ -25,7 +25,8 @@ Imports:
     caret,
     LogicReg,
     kernlab,
-    e1071
+    e1071,
+    randomForest
 Suggests: 
     testthat
 RoxygenNote: 6.1.1

@@ -46,9 +46,9 @@ comparison_viz <- function(comparison, choice){
     stop("Comparison dataframe has row(s) missing")
   }
   
-  if(all(sapply(comparison, typeof)!=
+  if(all(sapply(comparison, typeof) ==
          c("integer", "double", "double", 
-           "double", "double", "double", "double"))){
+           "double", "double", "double", "double")) == FALSE){
     stop("Comparison dataframe has incorrect column value types")
   }
   

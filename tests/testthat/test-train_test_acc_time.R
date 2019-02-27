@@ -40,10 +40,10 @@ test_that("insufficient inputs for the function", {
 })
 
 
-# Output should be 1 dataframe of 6 columns 
+# Output should be 1 dataframe of 7 columns 
 test_that("Output is 1 dataframe", {
   res <- train_test_acc_time(models, X_train, y_train, X_test, y_test)
-  expect_equal(length(res), 6)
+  expect_equal(length(res), 7)
 })
 
 # The inupt should be correct format
