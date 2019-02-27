@@ -28,5 +28,6 @@ Imports:
     e1071,
     randomForest
 Suggests: 
-    testthat
+    testthat, knitr, rmarkdown
 RoxygenNote: 6.1.1
+VignetteBuilder: knitr
