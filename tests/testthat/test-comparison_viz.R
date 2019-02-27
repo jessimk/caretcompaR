@@ -10,6 +10,7 @@ df <- data.frame(model = c('lm','rf','knn','svmLinearWeights'),
                  total_time = runif(4,2,12)
                  )
 
+
 # Input 'Comparison' dataframe tests
 
 test_that("whether 1st input is a dataframe", {
@@ -18,32 +19,22 @@ test_that("whether 1st input is a dataframe", {
 })
 
 test_that("Input dataframe has seven columns", {
-  expect_error(comparison_viz(df[-7],"time"),
-               "Comparison dataframe has column(s) missing")
-  expect_error(comparison_viz(cbind(df,df),"time"),
-               "Comparison dataframe has extra column(s)")
+  expect_error(comparison_viz(df[-7],"time"))
+  expect_error(comparison_viz(cbind(df,df),"time"))
 })
 
 test_that("Input dataframe has atleast 1 row", {
-  expect_error(comparison_viz(df[-c(1:4),],"time"),
-               "Comparison dataframe has row(s) missing")
+  expect_error(comparison_viz(df[-c(1:4),],"time"))
 })
 
 test_that("Input dataframe has correct column value types", {
-  expect_error(comparison_viz(replace(df,c(1),2),"time"),
-               "Model column must be string")
-  expect_error(comparison_viz(replace(df, c(2), "a"),"time"),
-               "Training accuracy column must be integer or double")
-  expect_error(comparison_viz(replace(df, c(3), "a"),"time"),
-               "Test accuracy column must be integer or double")
-  expect_error(comparison_viz(replace(df, c(4), "a"),"time"),
-               "Variance column must be integer or double")
-  expect_error(comparison_viz(replace(df, c(5), "a"),"time"),
-               "Fit time column must be integer or double")
-  expect_error(comparison_viz(replace(df, c(6), "a"),"time"),
-               "Predict time column must be integer or double")
-  expect_error(comparison_viz(replace(df, c(7), "a"),"time"),
-               "Total time column must be integer or double")
+  expect_error(comparison_viz(replace(df,c(1),2),"time"))
+  expect_error(comparison_viz(replace(df, c(2), "a"),"time"))
+  expect_error(comparison_viz(replace(df, c(3), "a"),"time"))
+  expect_error(comparison_viz(replace(df, c(4), "a"),"time"))
+  expect_error(comparison_viz(replace(df, c(5), "a"),"time"))
+  expect_error(comparison_viz(replace(df, c(6), "a"),"time"))
+  expect_error(comparison_viz(replace(df, c(7), "a"),"time"))
 })
 
 # Input 'Choice' string tests
@@ -61,15 +52,12 @@ test_that("Input string is either accuracy or time", {
 # Other input
 
 test_that("insufficient input", {
-  expect_error(comparison_viz(df),
-               "Choice input is missing")
-  expect_error(comparison_viz(choice = 'time'),
-               "Comparison dataframe is missing")
+  expect_error(comparison_viz(df))
+  expect_error(comparison_viz(choice = 'time'))
 })
 
 test_that("third input", {
-  expect_error(comparison_viz(df,"time", "123"),
-               "Extra input provided")
+  expect_error(comparison_viz(df,"time", "123"))
 })
 
 

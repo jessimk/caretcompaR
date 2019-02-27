@@ -19,12 +19,8 @@ context("test-train_test_acc_time")
 #                       total_time = runif(4,2,12)
 # )
 
-library(ISLR)
-library(caret)
-library(LogicReg)
-library(kernlab)
 
-index <- createDataPartition(iris$Species,p = 0.75,list=FALSE)
+index <- caret::createDataPartition(iris$Species,p = 0.75,list=FALSE)
 (train_iris <- iris[index,])
 (test_iris <- iris[-index,])
 X_train <-train_iris[,names(iris)!='Species'] 
