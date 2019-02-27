@@ -18,6 +18,16 @@ Description: caretcompaR facilitates beautifully efficient comparisons of machin
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports:
+    tidyr,
+    ggplot2,
+    ISLR,
+    caret,
+    LogicReg,
+    kernlab,
+    e1071,
+    randomForest
 Suggests: 
-    testthat
+    testthat, knitr, rmarkdown
 RoxygenNote: 6.1.1
+VignetteBuilder: knitr
