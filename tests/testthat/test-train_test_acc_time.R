@@ -40,8 +40,8 @@ test_that("insufficient inputs for the function", {
 })
 
 
-# Output should be 1 dataframe of 7 columns 
-test_that("Output is 1 dataframe", {
+# Output should be a dataframe of 7 columns 
+test_that("Output is a dataframe of 7 columns ", {
   res <- train_test_acc_time(models, X_train, y_train, X_test, y_test)
   expect_equal(length(res), 7)
 })
@@ -56,8 +56,11 @@ test_that("whether input models is a list ", {
 # Dimensions for Xtrain and ytrain should be consistent 
 test_that("consistency of Xtrain and ytrain domensions", {
   expect_equal(dim(X_train)[1],length(y_train))
-               
-  
 })
-  
-  
+
+# Check if the y_train or y_test are not 1 D vectors we should expect errors
+test_that("y_train or y_test are not 1 D vectors ", {
+  expect_error(train_test_acc_time(models,X_train,X_train, X_test, y_test))
+  expect_error(train_test_acc_time(models,X_train,y_train, X_test,X_test))
+})
+
