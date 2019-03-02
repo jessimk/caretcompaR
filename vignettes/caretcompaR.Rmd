@@ -18,79 +18,58 @@ Example Usage :
 
 ```{r}
 
+#Loading in the data and splitting it into an X dataframe of features and a y 'Target' vector.
+X <- iris[,1:4]
+y <- iris$Species
 
+head(X)
+head(y)
+```
 
-index <- caret::createDataPartition(iris$Species,p = 0.75,list=FALSE)
-train_iris <- iris[index,]
-test_iris <- iris[-index,]
-X_train <-train_iris[,names(iris)!='Species'] 
-y_train <- train_iris[,names(iris)=='Species'] 
-X_test <- test_iris[,names(iris)!='Species'] 
-y_test <- test_iris[,names(iris)=='Species'] 
+```{r}
+#Splitting data into a training set, a validation set, a combined training and validation set, as well as a test set. 
+# The split will be 40% training, 30% validation, and 30% test.
 
+glorious_datasets <- caretcompaR::split(X, y, 0.4, 0.3, 0.3)
+
+#' Resulting dataframes are sorted in a list in this order: 
+#' 1. X_train , 
+#' 2. y_train , 
+#' 3. X_validation , 
+#' 4. y_validation , 
+#' 5. X_train_validation , 
+#' 6. y_train_validation , 
+#' 7. X_test , 
+#' 8. y_test .
+
+#Assigning our freshly split datasets so we can run some machine learning models
+X_train <- glorious_datasets[[1]]
+y_train <- glorious_datasets[[2]]
+
+X_test <- glorious_datasets[[7]]
+y_test <- glorious_datasets[[8]]
+
+#Let's try these classifiers
 models <- c('svmPoly','knn','rf')
 
-print(models)
+#Running our chosen models on our data and building a beautiful summary
+results_df <- caretcompaR::train_test_acc_time(models,X_train,y_train$target,X_test,y_test$target)
 
-results_df <- caretcompaR::train_test_acc_time(models,X_train,y_train,X_test,y_test)
-
-# Outputs the dataframe of performance of different models
-
+#Let's see how we did in terms of train accuracy, test accuracy, and timing
 results_df
+```
 
+```{r}
+#Now let's also take a look at some plots to compare our models
 # Plot the accuracy of the models 
 caretcompaR::comparison_viz(results_df,'accuracy')
-
-
+#!["Accuracy"](vignettes/accuracy.png)
 ```
 
 
+```{r}
+# Plot the timing of the models 
+caretcompaR::comparison_viz(results_df,'time')
+#!["Time"](vignettes/time.png)
 
-
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
-
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
-
-## Vignette Info
-
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
-
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
 ```
-
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))

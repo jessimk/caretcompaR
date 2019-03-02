@@ -1,9 +1,10 @@
-context("Splitting data into Train, Test, Validation, and Train_Validation datasets")
+context("test-split")
 
 #Sample Data
 X <- iris[,1:4]
 y <- iris$Species
 
+#Tests
 test_that("Input X and Input Y are the same length", {
   expect_error(split(X[1,], y, 0.6, 0.2, 0.2), "X and y are don't have the same amount of rows. X and y need to number of rows.")
 })
