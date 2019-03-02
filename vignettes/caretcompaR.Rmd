@@ -7,6 +7,12 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+
+library(caretcompaR)
+
+```
 
 
 An R package facilitating beautifully efficient comparisons of machine learning classifiers and models.
