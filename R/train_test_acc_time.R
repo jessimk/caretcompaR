@@ -6,9 +6,9 @@
 #' 
 #' @param models A list of classifiers 
 #' @param X_train A dataframe of training data (features)
-#' @param y_train A dataframe or list of training target data
+#' @param y_train A vector of training target data
 #' @param X_test A dataframe of test data (features)
-#' @param y_test A dataframe or list of test target data
+#' @param y_test A vector of test target data
 #'
 #' @return A dataframe of results with 7 columns: classifer name, training accuracy, test accuracy, model variance, time to fit, time to predict, and total time. Results are sorted by test accuracy in descending order.
 #' 
@@ -18,20 +18,23 @@
 #' @export
 #'
 #' @examples
-#' train_test_acc_time(Models, Xtrain_data, ytrain_data, Xtest_data, ytest_data)
+#' library(caret)
+#' idx <- createDataPartition(iris$Species,p = 0.75,list=FALSE)
+#' train_iris <- iris[idx,]
+#' test_iris <- iris[-idx,]
+#' Xtrain <- train_iris[,names(iris)!='Species'] 
+#' ytrain <- train_iris[,names(iris)=='Species'] 
+#' Xtest <- test_iris[,names(iris)!='Species'] 
+#' ytest <- test_iris[,names(iris)=='Species'] 
+#' models <- c('svmPoly','knn','rf')
+#' train_test_acc_time(models, Xtrain, ytrain, Xtest, ytest)
 #' 
-
 train_test_acc_time <- function(models, X_train, y_train, X_test, y_test){
-  
   
   if(is.null(models)||is.null(c(X_train,X_test,y_train,y_test)) ){
     stop("Input is not correct")
-    stopifnot(is.atomic(models))
+    #stop(ifnot(is.atomic(models)))
   }
-  
-  
-  
-  
   
   result_df <- data.frame()
   

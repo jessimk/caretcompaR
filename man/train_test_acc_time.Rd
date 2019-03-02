@@ -27,6 +27,15 @@ This function compares different caret regressors or classifiers in terms of tra
 The function outputs a beautiful dataframe with training & test scores, model variance, and the time it takes to fit and predict using different models.
 }
 \examples{
-train_test_acc_time(Models, Xtrain_data, ytrain_data, Xtest_data, ytest_data)
+library(caret)
+idx <- createDataPartition(iris$Species,p = 0.75,list=FALSE)
+train_iris <- iris[idx,]
+test_iris <- iris[-idx,]
+Xtrain <- train_iris[,names(iris)!='Species'] 
+ytrain <- train_iris[,names(iris)=='Species'] 
+Xtest <- test_iris[,names(iris)!='Species'] 
+ytest <- test_iris[,names(iris)=='Species'] 
+models <- c('svmPoly','knn','rf')
+train_test_acc_time(models, Xtrain, ytrain, Xtest, ytest)
 
 }
