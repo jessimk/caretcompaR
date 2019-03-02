@@ -4,12 +4,12 @@
 \alias{comparison_viz}
 \title{Generating Model Comparison Viz}
 \usage{
-comparison_viz(comparison, choice)
+comparison_viz(comparison, choice = "accuracy")
 }
 \arguments{
 \item{comparison}{A dataframe, the output of train_test_acc_time(). Dimensions are 7 columns and at least 1 row.}
 
-\item{choice}{String, selecting the desired comparison visualization; either "accuracy" or "time".}
+\item{choice}{String, selecting the desired comparison visualization; either "accuracy" or "time". Default value is 'accuracy'.}
 }
 \value{
 PNG image; A bar chart of accuracies or a time comparison bar chart, saved to root directory.
@@ -28,7 +28,7 @@ Variance = runif(3,0,1),
 Fit_Time = runif(3,0,4), 
 Predict_Time = runif(3,0,4), 
 Total_Time = runif(3,0,4))
-comparison_viz(results_dataframe, "accuracy")
+comparison_viz(results_dataframe)
 comparison_viz(results_dataframe, "time")
 
 }

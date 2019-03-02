@@ -5,7 +5,7 @@
 #' This function outputs a beautiful ggplot bar chart comparison of different models' training and test scores or the time it takes to fit and predict.
 #'
 #' @param comparison A dataframe, the output of train_test_acc_time(). Dimensions are 7 columns and at least 1 row.
-#' @param choice String, selecting the desired comparison visualization; either "accuracy" or "time".
+#' @param choice String, selecting the desired comparison visualization; either "accuracy" or "time". Default value is 'accuracy'.
 #'
 #' @return PNG image; A bar chart of accuracies or a time comparison bar chart, saved to root directory.
 #' @export
@@ -21,16 +21,16 @@
 #' Fit_Time = runif(3,0,4), 
 #' Predict_Time = runif(3,0,4), 
 #' Total_Time = runif(3,0,4))
-#' comparison_viz(results_dataframe, "accuracy")
+#' comparison_viz(results_dataframe)
 #' comparison_viz(results_dataframe, "time")
 #' 
-comparison_viz <- function(comparison, choice){
+comparison_viz <- function(comparison, choice = "accuracy"){
   
   #########
   # TESTS #
   #########
   
-  if(is.null(comparison)||is.null(choice) ){
+  if(is.null(comparison)){
     stop("Input is not correct")
   }
   
