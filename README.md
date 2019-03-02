@@ -80,3 +80,24 @@ This package provides functions to help make the early stages of model selection
 Our idea for this package was to facilitate the comparison of machine learning classifiers and models. Our inspiration came from <a href="https://ubc-mds.github.io/descriptions/">UBC MDS DSCI 573</a> lab assignments where we learned to combine python's `sci-kit learn` with `pandas` in order to produce interpretable comparisons of train and test accuracies and time efficiencies across models.
 
 We are not currently aware of any packages that combine `caret` and dataframes for efficient and interpretable model-to-model comparisons. We expect that this combination is used in practice and after having used it while learning machine learning techniques during our UBC MDS courework, we thought it would be a good combination of tools to formally package together.
+
+### The ML models available for testing  
+
+| Model Name / Software Packages                 | Method Value             | Version | Libraries|
+| --------------------- |-----------------------| ----|---|
+| SVM Polynomial  | svmPoly |0.9.27  | kernlab|
+| SVM Linear | svmLinear |0.9.27  | kernlab|
+| Knn | knn |0.9.3  | |
+| Random Forest | rf | 4.6.14 |randomForest |
+| Naive Bayes | naive_bayes  | 0.9.3 | naivebayes|
+| caret | caret |  6.0.81| caret |
+| R version | R version |  3.5.2 | |
+
+
+While running the package the dictionary should contain the Method value in the list of models.
+```
+For example :
+models <- c('svmPoly','knn','rf','svmLinear','naive_bayes')
+```
+
+For further details please refer to the caret package url : [caret_package](http://topepo.github.io/caret/available-models.html)
