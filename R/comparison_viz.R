@@ -68,12 +68,17 @@ comparison_viz <- function(comparison, choice = "accuracy"){
     comparison <- comparison[-4][-3][-2]
   }
   
+  # Rearrange dataframe for plotting
   comparison_gathered <- tidyr::gather(comparison[1:3], 
-                                key = Type, value = Accuracy, 
+                                key = "Type", value = "Accuracy", 
                                 names(comparison)[2], names(comparison)[3])
   
-  comparison_visualization <- ggplot2::ggplot(comparison_gathered, aes(model, Accuracy)) + 
-    ggplot2::geom_bar(aes(fill = Type), stat = "identity", position = "dodge") + 
+  # Capitalize 1st letter for plotting
+  choice <- paste0(toupper(substr(choice, 1, 1)), substr(choice, 2, nchar(choice)))
+  
+  # Create comparison plot
+  comparison_visualization <- ggplot2::ggplot(comparison_gathered, aes_string("model", "Accuracy")) + 
+    ggplot2::geom_bar(aes_string(fill = "Type"), stat = "identity", position = "dodge") + 
     ggplot2::labs(
       title = paste("Comparison of", choice),
       x = "Model",
