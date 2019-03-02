@@ -52,7 +52,6 @@ test_that("Input string is either accuracy or time", {
 # Other input
 
 test_that("insufficient input", {
-  expect_error(comparison_viz(df))
   expect_error(comparison_viz(choice = 'time'))
 })
 
