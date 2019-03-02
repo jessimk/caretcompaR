@@ -4,7 +4,7 @@ output: rmarkdown::html_vignette
 date: "`r Sys.Date()`"
 vignette: >
   %\VignetteIndexEntry{caretcompaR}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
 
