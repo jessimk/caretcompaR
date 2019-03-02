@@ -76,6 +76,7 @@ For further details please refer to the caret package url : [caret_package](http
 - `train_test_acc_time()`
 
 	The purpose of this function is to compare different caret regressors or classifiers in terms of training and test accuracies, and the time it takes to fit and predict. The function inputs are list of models, input train samples `Xtrain`(input features), input test samples `Xtest`, target train values `ytrain` and target test values `ytest` (continuous or categorical).
+	
   The function outputs a beautiful dataframe with training & test scores, model variance, and the time it takes to fit and predict using different models.
 
 	__Inputs:__   
