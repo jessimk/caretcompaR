@@ -4,30 +4,44 @@
 \alias{split}
 \title{Splitting data into train, validation, train_validation and test sets}
 \usage{
-split(X, y, prop_train, prop_test, prop_validation)
+split(X, y, prop_train, prop_validation, prop_test)
 }
 \arguments{
 \item{X}{A dataframe of training data}
 
-\item{y}{A dataframe of the target data}
+\item{y}{A vector of the target data}
 
-\item{prop_train}{A float; proportion of data to be split into a training set. Prop_train, prop_test, and prop_validation need to add to 1.}
+\item{prop_train}{A non-negative, non-zero, float; proportion of data to be split into a training set.}
 
-\item{prop_test}{A float; proportion of data to be split into a test set. Prop_train, prop_test, and prop_validation need to add to 1.}
+\item{prop_validation}{A non-negative, non-zero,float; proportion of data to be split into a validation set.}
 
-\item{prop_validation}{A float; proportion of data to be split into a validation set. Prop_train, prop_test, and prop_validation need to add to 1.}
+\item{prop_test}{A non-negative, non-zero, float; proportion of data to be split into a test set.}
 }
 \value{
-Four X dataframes and four y lists. One each for training, validation, test, and a combined training and validation set.
+A list of eight dataframes covering training, validation, test and train_validation sets.
 }
 \description{
-This function splits the training set X, and target set y (class labels in classification, real numbers in regression) into 
-train, validation, train & validation, and test sets according to specified proportions. Proportions must add up to 1.
+This function splits the training set X, and target set y (class labels in classification, real numbers in regression) into train, validation, train & validation, and test sets according to specified proportions. 
+Proportions must add up to 1.
 }
 \details{
-Outputs four X dataframes and four y lists. One each for training, validation, test, and a combined training and validation set.
+Outputs four X dataframes and four y dataframes. 
+One each for training, validation, test, and a combined training and validation set.
+
+Resulting dataframes are sorted in a list in this order: 
+1. X_train , 
+2. y_train , 
+3. X_validation , 
+4. y_validation , 
+5. X_train_validation , 
+6. y_train_validation , 
+7. X_test , 
+8. y_test .
 }
 \examples{
-split(X_dataset, y_dataset, 0.4, 0.2, 0.2)
-split(X_toy_data, y_toy_data, 0.7, 0.1, 0.2)
+#Splitting data into 70\% train, 10\% validation, 20\% test
+eight_datasets <- split(iris[,1:4], iris$Species, 0.7, 0.1, 0.2)
+#X_train training set can be accessed as follows:
+eight_datasets[[1]]
+
 }

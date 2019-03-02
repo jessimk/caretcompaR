@@ -18,19 +18,24 @@
 #' @export
 #'
 #' @examples
-#' train_test_acc_time(Models, Xtrain_data, ytrain_data, Xtest_data, ytest_data)
+#' library(caret)
+#' idx <- createDataPartition(iris$Species,p = 0.75,list=FALSE)
+#' train_iris <- iris[idx,]
+#' test_iris <- iris[-idx,]
+#' Xtrain <- train_iris[,names(iris)!='Species'] 
+#' ytrain <- train_iris[,names(iris)=='Species'] 
+#' Xtest <- test_iris[,names(iris)!='Species'] 
+#' ytest <- test_iris[,names(iris)=='Species'] 
+#' models <- c('svmPoly','knn','rf')
+#' train_test_acc_time(models, Xtrain, ytrain, Xtest, ytest)
 #' 
-
 train_test_acc_time <- function(models, X_train, y_train, X_test, y_test){
   
   
   if(is.null(models)||is.null(c(X_train,X_test,y_train,y_test)) ){
     stop("Input is not correct")
-    stopifnot(is.atomic(models))
+    #stop(ifnot(is.atomic(models)))
   }
-  
-  
-  
   
   
   result_df <- data.frame()
