@@ -26,7 +26,8 @@ Imports:
     LogicReg,
     kernlab,
     e1071,
-    randomForest
+    randomForest,
+    dplyr
 Suggests: 
     testthat, knitr, rmarkdown
 RoxygenNote: 6.1.1
