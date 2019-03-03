@@ -18,9 +18,7 @@ __caretcompaR__ harnesses the power of <a href="https://topepo.github.io/caret/i
 1. Install devtools from CRAN `install.packages("devtools", build_vignettes = TRUE)`
 2. In an R environment, load devtools `library(devtools)`
 3. Install caretcompaR from github `install_github("UBC-MDS/caretcompaR", build_vignettes = TRUE)`
-4. Load caretcompaR `library(caretcompaR)`
-
-See the package vignette for detailed usage info. 
+4. Load caretcompaR `library(caretcompaR)
 
 ### The ML models available for testing  
 
@@ -40,9 +38,62 @@ While running the package the dictionary should contain the Method value in the 
 For example :
 models <- c('svmPoly','knn','rf','svmLinear','naive_bayes')
 ```
-
 For further details please refer to the caret package url : [caret_package](http://topepo.github.io/caret/available-models.html)  
 
+
+### Usage
+
+```
+
+#Loading in the data and splitting it into an X dataframe of features and a y 'Target' vector.
+X <- iris[,1:4]
+y <- iris$Species
+
+head(X)
+head(y)
+
+#Splitting data into a training set, a validation set, a combined training and validation set, as well as a test set. 
+# The split will be 40% training, 30% validation, and 30% test.
+
+glorious_datasets <- caretcompaR::split(X, y, 0.4, 0.3, 0.3)
+
+#' Resulting dataframes are sorted in a list in this order: 
+#' 1. X_train , 
+#' 2. y_train , 
+#' 3. X_validation , 
+#' 4. y_validation , 
+#' 5. X_train_validation , 
+#' 6. y_train_validation , 
+#' 7. X_test , 
+#' 8. y_test .
+
+#Assigning our freshly split datasets so we can run some machine learning models
+X_train <- glorious_datasets[[1]]
+y_train <- glorious_datasets[[2]]
+
+X_test <- glorious_datasets[[7]]
+y_test <- glorious_datasets[[8]]
+
+#Let's try these classifiers
+models <- c('svmPoly','knn','rf')
+
+#Running our chosen models on our data and building a beautiful summary
+results_df <- caretcompaR::train_test_acc_time(models,X_train,y_train$target,X_test,y_test$target)
+
+#Let's see how we did in terms of train accuracy, test accuracy, and timing
+results_df
+
+#Now let's also take a look at some plots to compare our models
+
+# Plot the accuracy of the models 
+caretcompaR::comparison_viz(results_df,'accuracy')
+
+# Plot the timing of the models 
+caretcompaR::comparison_viz(results_df,'time')
+
+```
+
+### Summary
 
 #### Function 1 :
 
