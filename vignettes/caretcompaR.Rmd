@@ -1,28 +1,19 @@
 ---
 title: "caretcompaR"
+author: "Birinder Singh, Jes Simkin, Talha Siddiqui"
 date: "`r Sys.Date()`"
-authors: Birinder Singh, Jes Simkin, Talha Siddiqui
 output: rmarkdown::html_vignette
-date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{caretcompaR}
+  %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-
-#Using caretcompaR
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-```
-
-```{r, echo = FALSE}
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
-set.seed(1014)
-options(dplyr.print_max = 10)
 ```
 
 An R package facilitating beautifully efficient comparisons of machine learning classifiers and models.
@@ -33,7 +24,7 @@ Example Usage :
 
 
 ```{r}
-
+library(caretcompaR)
 #Loading in the data and splitting it into an X dataframe of features and a y 'Target' vector.
 X <- iris[,1:4]
 y <- iris$Species
