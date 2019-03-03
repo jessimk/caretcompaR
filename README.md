@@ -15,13 +15,12 @@ __caretcompaR__ harnesses the power of <a href="https://topepo.github.io/caret/i
 
 ### Installation
 
-1. Install devtools from CRAN `install.packages("devtools")`
+1. Install devtools from CRAN `install.packages("devtools", build_vignettes = TRUE)`
 2. In an R environment, load devtools `library(devtools)`
-3. Install caretcompaR from github `install_github("UBC-MDS/caretcompaR")`
+3. Install caretcompaR from github `install_github("UBC-MDS/caretcompaR", build_vignettes = TRUE)`
 4. Load caretcompaR `library(caretcompaR)`
 
-See the package vignette for detailed usage info.  
-
+See the package vignette for detailed usage info. 
 
 ### The ML models available for testing  
 
