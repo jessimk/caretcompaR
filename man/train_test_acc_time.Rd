@@ -11,11 +11,11 @@ train_test_acc_time(models, X_train, y_train, X_test, y_test)
 
 \item{X_train}{A dataframe of training data (features)}
 
-\item{y_train}{A dataframe or list of training target data}
+\item{y_train}{A vector of training target data}
 
 \item{X_test}{A dataframe of test data (features)}
 
-\item{y_test}{A dataframe or list of test target data}
+\item{y_test}{A vector of test target data}
 }
 \value{
 A dataframe of results with 7 columns: classifer name, training accuracy, test accuracy, model variance, time to fit, time to predict, and total time. Results are sorted by test accuracy in descending order.
