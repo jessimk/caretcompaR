@@ -64,3 +64,7 @@ test_that("y_train or y_test are not 1 D vectors ", {
   expect_error(train_test_acc_time(models,X_train,y_train, X_test,X_test))
 })
 
+# Check for NULL input
+test_that("NULL input", {
+  expect_error(train_test_acc_time(NULL, NULL, NULL, NULL, NULL))
+})
