@@ -26,8 +26,11 @@ Imports:
     LogicReg,
     kernlab,
     e1071,
-    randomForest
+    randomForest,
+    dplyr
 Suggests: 
-    testthat, knitr, rmarkdown
+    testthat,
+    rmarkdown,
+    knitr
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

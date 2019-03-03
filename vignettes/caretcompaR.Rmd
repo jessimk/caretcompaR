@@ -1,13 +1,20 @@
 ---
 title: "caretcompaR"
+author: "Birinder Singh, Jes Simkin, Talha Siddiqui"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{caretcompaR}
   %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
-
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 An R package facilitating beautifully efficient comparisons of machine learning classifiers and models.
 
@@ -17,7 +24,7 @@ Example Usage :
 
 
 ```{r}
-
+library(caretcompaR)
 #Loading in the data and splitting it into an X dataframe of features and a y 'Target' vector.
 X <- iris[,1:4]
 y <- iris$Species
@@ -27,6 +34,7 @@ head(y)
 ```
 
 ```{r}
+library(caretcompaR)
 #Splitting data into a training set, a validation set, a combined training and validation set, as well as a test set. 
 # The split will be 40% training, 30% validation, and 30% test.
 

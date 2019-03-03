@@ -51,6 +51,10 @@ test_that("Input string is either accuracy or time", {
 
 # Other input
 
+test_that("NULL input", {
+  expect_error(comparison_viz(comparison = NULL))
+})
+
 test_that("insufficient input", {
   expect_error(comparison_viz(choice = 'time'))
 })
@@ -59,7 +63,7 @@ test_that("third input", {
   expect_error(comparison_viz(df,"time", "123"))
 })
 
-
-
-
-
+test_that("Output verification", {
+  comparison_viz(df,"time")
+  expect_true("Time.png" %in% list.files())
+})
