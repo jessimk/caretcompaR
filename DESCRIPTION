@@ -29,6 +29,8 @@ Imports:
     randomForest,
     dplyr
 Suggests: 
-    testthat, knitr, rmarkdown
+    testthat, 
+	knitr, 
+	rmarkdown
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
