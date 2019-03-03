@@ -1,5 +1,6 @@
 ---
 title: "caretcompaR"
+authors: Birinder Singh, Jes Simkin, Talha Siddiqui
 output: rmarkdown::html_vignette
 date: "`r Sys.Date()`"
 vignette: >
@@ -7,6 +8,8 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
+
+#Using caretcompaR
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
