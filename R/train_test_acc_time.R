@@ -30,11 +30,36 @@
 #' train_test_acc_time(models, Xtrain, ytrain, Xtest, ytest)
 #' 
 train_test_acc_time <- function(models, X_train, y_train, X_test, y_test){
-  
+
   if(is.null(models)||is.null(c(X_train,X_test,y_train,y_test)) ){
-    stop("Input is not correct")
+    stop("Dear Friend : Did you input all of these models, X_train, y_train, X_test, y_test")
     #stop(ifnot(is.atomic(models)))
   }
+
+  if(dim(X_train)[1]!=length(y_train)){
+    stop("Dear Friend: Dimensions of X_train and y_train are not consistent")
+  }
+  
+  if(dim(X_test)[1]!=length(y_test)){
+    stop("Dear Friend: Dimensions of X_train and y_train are not consistent")
+  }
+  
+  if(!is.data.frame(X_test)){
+    stop("Dear Friend: X_test is not a Data Frame")
+  }
+  
+  if(!is.data.frame(X_test)){
+    stop("Dear Friend: X_test is not a Data Frame")
+  }
+  
+  if(dim(X_train)[2]!=dim(X_test)[2]){
+    stop("Dear Friend: Dimensions of X_train and X_test are not consistent")
+  }
+  
+  if(dim(X_train)[2]!=dim(X_test)[2]){
+    stop("Dear Friend: Dimensions of y_train and y_test are not consistent")
+  }
+  
   
   result_df <- data.frame()
   
@@ -66,6 +91,4 @@ train_test_acc_time <- function(models, X_train, y_train, X_test, y_test){
 
   return(result)
 }
-
-
 
