@@ -52,19 +52,19 @@ y <- iris$Species
 head(X)
 head(y)
 
-#Splitting data into a training set, a validation set, a combined training and validation set, as well as a test set. 
+#Splitting data into a training set, a validation set, a combined training and validation set, as well as a test set.
 # The split will be 40% training, 30% validation, and 30% test.
 
 glorious_datasets <- caretcompaR::split(X, y, 0.4, 0.3, 0.3)
 
-#' Resulting dataframes are sorted in a list in this order: 
-#' 1. X_train , 
-#' 2. y_train , 
-#' 3. X_validation , 
-#' 4. y_validation , 
-#' 5. X_train_validation , 
-#' 6. y_train_validation , 
-#' 7. X_test , 
+#' Resulting dataframes are sorted in a list in this order:
+#' 1. X_train ,
+#' 2. y_train ,
+#' 3. X_validation ,
+#' 4. y_validation ,
+#' 5. X_train_validation ,
+#' 6. y_train_validation ,
+#' 7. X_test ,
 #' 8. y_test .
 
 #Assigning our freshly split datasets so we can run some machine learning models
@@ -85,10 +85,10 @@ results_df
 
 #Now let's also take a look at some plots to compare our models
 
-# Plot the accuracy of the models 
+# Plot the accuracy of the models
 caretcompaR::comparison_viz(results_df,'accuracy')
 
-# Plot the timing of the models 
+# Plot the timing of the models
 caretcompaR::comparison_viz(results_df,'time')
 
 ```
@@ -126,7 +126,7 @@ caretcompaR::comparison_viz(results_df,'time')
 - `train_test_acc_time()`
 
 	The purpose of this function is to compare different caret regressors or classifiers in terms of training and test accuracies, and the time it takes to fit and predict. The function inputs are list of models, input train samples `Xtrain`(input features), input test samples `Xtest`, target train values `ytrain` and target test values `ytest` (continuous or categorical).
-	
+
   The function outputs a beautiful dataframe with training & test scores, model variance, and the time it takes to fit and predict using different models.
 
 	__Inputs:__   
@@ -149,7 +149,7 @@ caretcompaR::comparison_viz(results_df,'time')
 
 	__Inputs:__   
 	- Dataframe with 7 columns: (1) regressor or classifier name, (2) training accuracy, (3) test accuracy, (4) model variance, (5) time it takes to fit, (6) time it takes to predict and (7) total time. Type: `data.frame()`
-  - Choice of `accuracy` or `time`. Type: `string`
+  - Choice of `accuracy` or `time`. Default value is `accuracy`. Type: `string`
 
 	__Outputs:__
 
@@ -163,3 +163,118 @@ Our idea for this package was to facilitate the comparison of machine learning c
 
 We are not currently aware of any packages that combine `caret` and dataframes for efficient and interpretable model-to-model comparisons. We expect that this combination is used in practice and after having used it while learning machine learning techniques during our UBC MDS courework, we thought it would be a good combination of tools to formally package together.
 
+### Testing
+
+`covr` package coverage results:
+
+```
+caretcompaR Coverage: 100.00%
+R/comparison_viz.R: 100.00%
+R/split.R: 100.00%
+R/train_test_acc_time.R: 100.00%
+```
+![](branch_coverage.PNG)
+
+
+
+Build Check results:
+
+```
+==> devtools::check()
+
+Updating caretcompaR documentation
+Writing NAMESPACE
+Loading caretcompaR
+Writing NAMESPACE
+-- Building ----------------------------------------------------------------------- caretcompaR --
+Setting env vars:
+* CFLAGS    : -Wall -pedantic -fdiagnostics-color=always
+* CXXFLAGS  : -Wall -pedantic -fdiagnostics-color=always
+* CXX11FLAGS: -Wall -pedantic -fdiagnostics-color=always
+--------------------------------------------------------------------------------------------------
+v  checking for file 'C:\Users\talha\OneDrive\Documents\MDS\block5\524\caretcompaR/DESCRIPTION' ...
+-  preparing 'caretcompaR': (418ms)
+v  checking DESCRIPTION meta-information ...
+-  installing the package to build vignettes
+v  creating vignettes (16.6s)
+-  checking for LF line-endings in source and make files and shell scripts (541ms)
+-  checking for empty or unneeded directories
+-  building 'caretcompaR_0.0.0.9000.tar.gz'
+
+-- Checking ----------------------------------------------------------------------- caretcompaR --
+Setting env vars:
+* _R_CHECK_CRAN_INCOMING_USE_ASPELL_: TRUE
+* _R_CHECK_CRAN_INCOMING_REMOTE_    : FALSE
+* _R_CHECK_CRAN_INCOMING_           : FALSE
+* _R_CHECK_FORCE_SUGGESTS_          : FALSE
+-- R CMD check -----------------------------------------------------------------
+
+   Welcome Talha at Sun Mar 03 13:55:03 2019 !
+-  using log directory 'C:/Users/talha/OneDrive/Documents/MDS/block5/524/caretcompaR.Rcheck'
+-  using R version 3.5.2 (2018-12-20)
+-  using platform: x86_64-w64-mingw32 (64-bit)
+-  using session charset: ISO8859-1
+-  using options '--no-manual --as-cran'
+v  checking for file 'caretcompaR/DESCRIPTION' ...
+-  this is package 'caretcompaR' version '0.0.0.9000'
+-  package encoding: UTF-8
+v  checking package namespace information
+v  checking package dependencies (34.1s)
+v  checking if this is a source package ...
+v  checking if there is a namespace
+v  checking for executable files (417ms)
+v  checking for hidden files and directories ...
+v  checking for portable file names ...
+v  checking serialization versions ...
+v  checking whether package 'caretcompaR' can be installed (9.2s)
+v  checking installed package size ...
+v  checking package directory (465ms)
+v  checking 'build' directory
+v  checking DESCRIPTION meta-information ...
+v  checking top-level files ...
+v  checking for left-over files ...
+v  checking index information ...
+v  checking package subdirectories ...
+v  checking R files for non-ASCII characters ...
+v  checking R files for syntax errors ...
+v  checking whether the package can be loaded (2.1s)
+v  checking whether the package can be loaded with stated dependencies (2s)
+v  checking whether the package can be unloaded cleanly (1.9s)
+v  checking whether the namespace can be loaded with stated dependencies (1.8s)
+v  checking whether the namespace can be unloaded cleanly (1.9s)
+v  checking loading without being on the library search path (2.4s)
+v  checking dependencies in R code (2s)
+v  checking S3 generic/method consistency (2.5s)
+v  checking replacement functions (1.9s)
+v  checking foreign function calls (1.8s)
+v  checking R code for possible problems (8s)
+v  checking Rd files ...
+v  checking Rd metadata ...
+v  checking Rd line widths ...
+v  checking Rd cross-references ...
+v  checking for missing documentation entries (1.9s)
+v  checking for code/documentation mismatches (5.5s)
+v  checking Rd \usage sections (2.6s)
+v  checking Rd contents ...
+v  checking for unstated dependencies in examples ...
+v  checking installed files from 'inst/doc' ...
+v  checking files in 'vignettes' ...
+v  checking examples (13.2s)
+   Examples with CPU or elapsed time > 5s
+                       user system elapsed
+   train_test_acc_time 9.55   0.15    9.77
+v  checking for unstated dependencies in 'tests' ...
+-  checking tests ...
+v  Running 'testthat.R' [18s]
+v  checking for unstated dependencies in vignettes ...
+v  checking package vignettes in 'inst/doc' ...
+v  checking re-building of vignette outputs (12.4s)
+
+
+-- R CMD check results ----------------------------- caretcompaR 0.0.0.9000 ----
+Duration: 2m 11s
+
+0 errors v | 0 warnings v | 0 notes v
+
+R CMD check succeeded
+```
