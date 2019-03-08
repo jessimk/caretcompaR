@@ -26,8 +26,6 @@
 #' 
 comparison_viz <- function(comparison, choice = "accuracy"){
   
-  # Capitalize 1st letter for consistency and later, plotting
-  choice <- paste0(toupper(substr(choice, 1, 1)), substr(choice, 2, nchar(choice)))
   
   #########
   # TESTS #
@@ -62,6 +60,9 @@ comparison_viz <- function(comparison, choice = "accuracy"){
   if(is.character(choice) == FALSE){
     stop("Choice input must be string")
   }
+  
+  # Capitalize 1st letter for consistency and later, plotting
+  choice <- paste0(toupper(substr(choice, 1, 1)), substr(choice, 2, nchar(choice)))
   
   if((choice == "Accuracy" | choice == "Time") == FALSE){
     stop("Choice input must either be 'time' or 'accuracy'")
