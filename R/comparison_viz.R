@@ -26,6 +26,7 @@
 #' 
 comparison_viz <- function(comparison, choice = "accuracy"){
   
+  
   #########
   # TESTS #
   #########
@@ -42,6 +43,10 @@ comparison_viz <- function(comparison, choice = "accuracy"){
     stop("Comparison dataframe must have 7 columns")
   }
   
+  if(dim(comparison)[1] == 1){
+    warning("Did you not want to compare? Comparison dataframe only has 1 row")
+  }
+  
   if(dim(comparison)[1] < 1){
     stop("Comparison dataframe has row(s) missing")
   }
@@ -56,7 +61,10 @@ comparison_viz <- function(comparison, choice = "accuracy"){
     stop("Choice input must be string")
   }
   
-  if((choice == "accuracy" | choice == "time") == FALSE){
+  # Capitalize 1st letter for consistency and later, plotting
+  choice <- paste0(toupper(substr(choice, 1, 1)), substr(choice, 2, nchar(choice)))
+  
+  if((choice == "Accuracy" | choice == "Time") == FALSE){
     stop("Choice input must either be 'time' or 'accuracy'")
   }
   
@@ -64,7 +72,7 @@ comparison_viz <- function(comparison, choice = "accuracy"){
   # FUNCTION CODE #
   #################
   
-  if(choice=="time"){
+  if(choice=="Time"){
     comparison <- comparison[-4][-3][-2]
   }
   
@@ -73,8 +81,6 @@ comparison_viz <- function(comparison, choice = "accuracy"){
                                 key = "Type", value = "Accuracy", 
                                 names(comparison)[2], names(comparison)[3])
   
-  # Capitalize 1st letter for plotting
-  choice <- paste0(toupper(substr(choice, 1, 1)), substr(choice, 2, nchar(choice)))
   
   # Create comparison plot
   comparison_visualization <- ggplot2::ggplot(comparison_gathered, aes_string("model", "Accuracy")) + 
