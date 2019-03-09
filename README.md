@@ -116,8 +116,9 @@ __caretcompaR__ harnesses the power of <a href="https://topepo.github.io/caret/i
 
 1. Install devtools from CRAN `install.packages("devtools", build_vignettes = TRUE)`
 2. In an R environment, load devtools `library(devtools)`
-3. Install caretcompaR from github `install_github("UBC-MDS/caretcompaR", build_vignettes = TRUE)`
+3. Install caretcompaR from github `install_github("UBC-MDS/caretcompaR", build_opts = c("--no-resave-data", "--no-manual"))`
 4. Load caretcompaR `library(caretcompaR)`
+5. To know more about the package checkout the vignette at `browseVignettes("caretcompaR")`
 
 #### The ML models available for testing  
 
@@ -219,4 +220,4 @@ We are not currently aware of any packages that combine `caret` and dataframes f
 ### Contribute
 
 Interested in contributing?
-See our [Contributing Guidelines](https://github.com/UBC-MDS/SklearncomPYre/blob/master/CONTRIBUTING.md) and [Code of Conduct](https://github.com/UBC-MDS/SklearncomPYre/blob/master/Conduct.md).
+See our [Contributing Guidelines](https://github.com/UBC-MDS/caretcompaR/blob/master/Contribution.md) and [Code of Conduct](https://github.com/UBC-MDS/caretcompaR/blob/master/CODE_OF_CONDUCT.md).
