@@ -1,5 +1,5 @@
 # caretcompaR
-[![Build Status](https://travis-ci.org/UBC-MDS/caretcompaR.svg?branch=master)](https://travis-ci.org/UBC-MDS/caretcompaR)
+[![Build Status](https://travis-ci.org/UBC-MDS/caretcompaR.svg?branch=master)](https://travis-ci.org/UBC-MDS/caretcompaR) [![codecov](https://codecov.io/gh/UBC-MDS/caretcompaR/branch/master/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/caretcompaR)
 
 | Contributor                  | Github              | CWL |
 | --------------------- |-----------------------|-----------------------|
