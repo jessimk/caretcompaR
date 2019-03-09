@@ -48,8 +48,8 @@ test_that("Output is a dataframe of 7 columns ", {
 
 # The inupt should be correct format
 test_that("whether input models is a list ", {
-  expect_error(train_test_acc_time('models', X_train, y_train, X_test, y_test))
-  expect_error(train_test_acc_time(models, 123, y_train, X_test, y_test))
+  expect_error(train_test_acc_time(models, X_train, y_train, 'X_test', y_test),"Dear Friend: X_test is not a Data Frame")
+  expect_error(train_test_acc_time(models, 123, y_train, X_test, y_test),"Dear Friend: X_train is not a Data Frame")
                
 })
 
@@ -66,5 +66,5 @@ test_that("y_train or y_test are not 1 D vectors ", {
 
 # Check for NULL input
 test_that("NULL input", {
-  expect_error(train_test_acc_time(NULL, NULL, NULL, NULL, NULL))
+  expect_error(train_test_acc_time(NULL, NULL, NULL, NULL, NULL),"Dear Friend : Did you input all of these models, X_train, y_train, X_test, y_test")
 })
