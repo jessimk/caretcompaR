@@ -119,7 +119,7 @@ __caretcompaR__ harnesses the power of <a href="https://topepo.github.io/caret/i
 3. Install caretcompaR from github `install_github("UBC-MDS/caretcompaR", build_vignettes = TRUE)`
 4. Load caretcompaR `library(caretcompaR)`
 
-### The ML models available for testing  
+#### The ML models available for testing  
 
 | Model Name / Software Packages                 | Method Value             | Version | Libraries|
 | --------------------- |-----------------------| ----|---|
@@ -210,9 +210,11 @@ Our idea for this package was to facilitate the comparison of machine learning c
 
 We are not currently aware of any packages that combine `caret` and dataframes for efficient and interpretable model-to-model comparisons. We expect that this combination is used in practice and after having used it while learning machine learning techniques during our UBC MDS coursework, we thought it would be a good combination of tools to formally package together.
 
+
 ### License
 
 [MIT License](https://github.com/UBC-MDS/SklearncomPYre/blob/master/LICENSE)
+
 
 ### Contribute
 
